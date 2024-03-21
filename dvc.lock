@@ -1,0 +1,48 @@
+schema: '2.0'
+stages:
+  data:
+    cmd: python src/prepare_data.py
+    deps:
+    - path: src/prepare_data.py
+      hash: md5
+      md5: 02cb8f8e9376e3171ab4750fb9d9e57e
+      size: 682
+    outs:
+    - path: data/features.csv
+      hash: md5
+      md5: e361a6f60d3ebcc369110f5af1469a9e
+      size: 9897
+  train_randomforest:
+    cmd: python src/train_randomforest.py
+    deps:
+    - path: data/features.csv
+      hash: md5
+      md5: e361a6f60d3ebcc369110f5af1469a9e
+      size: 9897
+    - path: src/train_randomforest.py
+      hash: md5
+      md5: 70688b95dd0bc5ebc75ad586efada252
+      size: 1654
+  train_logreg:
+    cmd: python src/train_logreg.py
+    deps:
+    - path: data/features.csv
+      hash: md5
+      md5: e361a6f60d3ebcc369110f5af1469a9e
+      size: 9897
+  evaluate:
+    cmd: python src/evaluate_models.py
+    deps:
+    - path: models/model_logreg.pkl
+      hash: md5
+      md5: ab05554ab36dda7879713b86170831fe
+      size: 1285
+    - path: models/model_randomforest.pkl
+      hash: md5
+      md5: fecfa4ef54d3cd969645ae2d3e5894ad
+      size: 405993
+    outs:
+    - path: reports/metrics_report.json
+      hash: md5
+      md5: f4f4cdc9dfe13a664292c9debd9fa181
+      size: 40
