@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+from PIL import Image
 import random
 from sklearn.ensemble import RandomForestClassifier
 import time
@@ -41,12 +42,17 @@ def train_randomforest():
     joblib.dump(model, MODEL_PATH)
 
 
+    EPOCHS = 20
 
-    with Live(
-        dir="reports/randomforest",
-        # save_dvc_exp=True,
-    ) as live:
-        
+    with Live(dir="reports/randomforest") as live:
+                
+        for i in range(EPOCHS):
+            live.log_metric("mae", i * random.random())
+            live.log_metric("segment_A/f1", i * random.random())
+            live.next_step()
+
+            time.sleep(1)
+
         live.log_artifact(
             path=MODEL_PATH,
             type="model",
@@ -61,8 +67,8 @@ def train_randomforest():
             y="Error",
             template="simple",
             title="Errors vs Max Leaf Nodes")
-
-    # time.sleep(2)
+        
+    
     print("Training Random Forest model - COMPLETE")
 
 if __name__ == "__main__":

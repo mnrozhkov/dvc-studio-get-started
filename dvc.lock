@@ -21,8 +21,8 @@ stages:
       size: 9892
     - path: src/train_randomforest.py
       hash: md5
-      md5: 70688b95dd0bc5ebc75ad586efada252
-      size: 1654
+      md5: 127c2a6a85ffe8b50907953405e521a6
+      size: 1859
   train_logreg:
     cmd: python src/train_logreg.py
     deps:
@@ -39,10 +39,5 @@ stages:
       size: 1285
     - path: models/model_randomforest.pkl
       hash: md5
-      md5: 14561bab0345dd99452b4651195dcb78
-      size: 414153
-    outs:
-    - path: reports/metrics_report.json
-      hash: md5
-      md5: f9b554b4cf4ecfe4c14e311bf16679fc
-      size: 41
+      md5: 49136809b135a183ce0dc43e94fb13f7
+      size: 405513

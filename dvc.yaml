@@ -36,11 +36,14 @@ artifacts:
     type: model
     labels:
     - lr
+metrics:
+- dvclive/metrics.json
+- reports/randomforest/metrics.json
 plots:
+- reports/randomforest/plots/metrics:
+    x: step
 - reports/randomforest/plots/custom/errors_vs_leafs.json:
     template: simple
     x: Max Leaf Nodes
     y: Error
     title: Errors vs Max Leaf Nodes
-metrics:
-- dvclive/metrics.json
