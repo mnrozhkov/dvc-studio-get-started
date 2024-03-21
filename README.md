@@ -21,6 +21,18 @@ pip install -r requirements.txt
 
 ## Run
 
+### Run Python script with DVCLive 
+
+```bash
+python src/train_logreg.py
+```
+
+```bash
+python src/train_randomforest.py
+```
+
+### Run DVC pipeline 
+
 To run the pipeline, execute the following command:
 
 ```bash

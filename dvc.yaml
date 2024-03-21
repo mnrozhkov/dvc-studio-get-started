@@ -1,8 +1,22 @@
 metrics:
 - dvclive/metrics.json
+- reports/randomforest/metrics.json
 artifacts:
   logreg:
     path: models/model_logreg.pkl
     type: model
     labels:
     - lr
+  randomforest:
+    path: models/model_randomforest.pkl
+    type: model
+    labels:
+    - rf
+plots:
+- reports/randomforest/plots/metrics:
+    x: step
+- reports/randomforest/plots/custom/errors_vs_leafs.json:
+    template: simple
+    x: Max Leaf Nodes
+    y: Error
+    title: Errors vs Max Leaf Nodes
