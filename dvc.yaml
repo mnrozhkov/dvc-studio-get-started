@@ -22,8 +22,8 @@ stages:
     deps:
     - models/model_randomforest.pkl
     - models/model_logreg.pkl
-    metrics:
-    - reports/metrics_report.json
+    # metrics:
+    # - reports/metrics_report.json
 
 artifacts:
   randomforest:
