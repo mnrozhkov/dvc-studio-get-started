@@ -1,49 +1,8 @@
-stages:
-  data:
-    cmd: python src/prepare_data.py
-    deps:
-    - src/prepare_data.py
-    outs:
-    - data/features.csv
-
-  train_logreg:
-    cmd: python src/train_logreg.py
-    deps:
-    - data/features.csv
-
-  train_randomforest:
-    cmd: python src/train_randomforest.py
-    deps:
-    - data/features.csv
-    - src/train_randomforest.py
-
-  evaluate:
-    cmd: python src/evaluate_models.py
-    deps:
-    - models/model_randomforest.pkl
-    - models/model_logreg.pkl
-    # metrics:
-    # - reports/metrics_report.json
-
+metrics:
+- dvclive/metrics.json
 artifacts:
-  randomforest:
-    path: models/model_randomforest.pkl
-    type: model
-    labels:
-    - rf
   logreg:
     path: models/model_logreg.pkl
     type: model
     labels:
     - lr
-metrics:
-- dvclive/metrics.json
-- reports/randomforest/metrics.json
-plots:
-- reports/randomforest/plots/metrics:
-    x: step
-- reports/randomforest/plots/custom/errors_vs_leafs.json:
-    template: simple
-    x: Max Leaf Nodes
-    y: Error
-    title: Errors vs Max Leaf Nodes
