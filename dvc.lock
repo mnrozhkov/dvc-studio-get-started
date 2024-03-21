@@ -10,15 +10,15 @@ stages:
     outs:
     - path: data/features.csv
       hash: md5
-      md5: e361a6f60d3ebcc369110f5af1469a9e
-      size: 9897
+      md5: a0c78d18060878506434fbee1252d845
+      size: 9892
   train_randomforest:
     cmd: python src/train_randomforest.py
     deps:
     - path: data/features.csv
       hash: md5
-      md5: e361a6f60d3ebcc369110f5af1469a9e
-      size: 9897
+      md5: a0c78d18060878506434fbee1252d845
+      size: 9892
     - path: src/train_randomforest.py
       hash: md5
       md5: 70688b95dd0bc5ebc75ad586efada252
@@ -28,21 +28,21 @@ stages:
     deps:
     - path: data/features.csv
       hash: md5
-      md5: e361a6f60d3ebcc369110f5af1469a9e
-      size: 9897
+      md5: a0c78d18060878506434fbee1252d845
+      size: 9892
   evaluate:
     cmd: python src/evaluate_models.py
     deps:
     - path: models/model_logreg.pkl
       hash: md5
-      md5: ab05554ab36dda7879713b86170831fe
+      md5: 4eb612dd9be031fe65b32e68d10b993b
       size: 1285
     - path: models/model_randomforest.pkl
       hash: md5
-      md5: fecfa4ef54d3cd969645ae2d3e5894ad
-      size: 405993
+      md5: 14561bab0345dd99452b4651195dcb78
+      size: 414153
     outs:
     - path: reports/metrics_report.json
       hash: md5
-      md5: f4f4cdc9dfe13a664292c9debd9fa181
-      size: 40
+      md5: f9b554b4cf4ecfe4c14e311bf16679fc
+      size: 41
